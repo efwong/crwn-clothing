@@ -8,7 +8,10 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up
 
 import Header from './components/header/header.component';
 
-import { auth } from './firebase/firebase.utils'; // get user state
+import { auth, createUserProfileDocument } from './firebase/firebase.utils'; // get user state
+
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 const HatsPage = () => (
   <div>
@@ -27,10 +30,27 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({ currentUser: user });
-      console.log(user);
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+      createUserProfileDocument(user);
+      // this.setState({ currentUser: user });
+      console.log('user', user);
     });
+
+    const firestore = firebase.firestore();
+
+    // const test = firestore
+    // .collection('users')
+    // .doc('LZtYdFQVSOLwsF0oHgoY')
+    // .collection('cartItems')
+    // .doc('NBP2FHZmuc4bldil9eIh')
+    // const test = firestore
+    //   .doc('/users/LZtYdFQVSOLwsF0oHgoY/cartItems/NBP2FHZmuc4bldil9eIh')
+    //   .get()
+    //   .then(x => {
+    //     if (x.exists) {
+    //       console.log('value', x.data());
+    //     }
+    //   });
   }
 
   componentWillUnmount() {

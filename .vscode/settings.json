@@ -21,5 +21,6 @@
         "typescript",
         "typescriptreact"
     ],
-    "prettier.singleQuote": true
+    "prettier.singleQuote": true,
+    "editor.tabSize": 2
 }

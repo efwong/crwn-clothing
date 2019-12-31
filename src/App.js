@@ -30,12 +30,35 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
-      createUserProfileDocument(user);
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+        // check when userRef changes and setState of local currentUser
+        userRef.onSnapshot(snapShot => {
+          this.setState(
+            {
+              currentUser: {
+                id: snapShot.id,
+                ...snapShot.data()
+              }
+            },
+            () => {
+              console.log('change', this.state);
+            }
+          );
+        });
+        console.log('await userref', userRef);
+        // createUserProfileDocument(userAuth).then(x => {
+        //   console.log('sss', x);
+        // });
+      }
+      // set currentUser to null
+      this.setState({ currentUser: userAuth });
+      // createUserProfileDocument(user);
       // this.setState({ currentUser: user });
-      console.log('user', user);
+      console.log('after createUserProfileDocument');
     });
-
+    console.log('after onAuthStateChanged');
     const firestore = firebase.firestore();
 
     // const test = firestore

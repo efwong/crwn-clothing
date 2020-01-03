@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 
@@ -9,6 +10,7 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up
 import Header from './components/header/header.component';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'; // get user state
+import { setCurrentUser } from './redux/user/user.actions';
 
 import firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -20,43 +22,25 @@ const HatsPage = () => (
 );
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      currentUser: null
-    };
-  }
-
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+    const { setCurrentUser } = this.props;
+    console.log('my props', this.props);
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         // check when userRef changes and setState of local currentUser
         userRef.onSnapshot(snapShot => {
-          this.setState(
-            {
-              currentUser: {
-                id: snapShot.id,
-                ...snapShot.data()
-              }
-            },
-            () => {
-              console.log('change', this.state);
-            }
-          );
+          setCurrentUser({
+            id: snapShot.id,
+            ...snapShot.data()
+          });
         });
         console.log('await userref', userRef);
-        // createUserProfileDocument(userAuth).then(x => {
-        //   console.log('sss', x);
-        // });
       }
       // set currentUser to null
-      this.setState({ currentUser: userAuth });
-      // createUserProfileDocument(user);
-      // this.setState({ currentUser: user });
-      console.log('after createUserProfileDocument');
+      setCurrentUser(userAuth);
     });
     console.log('after onAuthStateChanged');
     const firestore = firebase.firestore();
@@ -83,7 +67,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header currentUser={this.state.currentUser} />
+        <Header />
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
@@ -94,4 +78,11 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);

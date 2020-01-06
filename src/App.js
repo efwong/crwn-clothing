@@ -26,7 +26,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const { setCurrentUser } = this.props;
-    console.log('my props', this.props);
+    // console.log('my props', this.props);
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
@@ -37,13 +37,13 @@ class App extends React.Component {
             ...snapShot.data()
           });
         });
-        console.log('await userref', userRef);
+        // console.log('await userref', userRef);
       }
       // set currentUser to null
       setCurrentUser(userAuth);
     });
     console.log('after onAuthStateChanged');
-    const firestore = firebase.firestore();
+    // const firestore = firebase.firestore();
 
     // const test = firestore
     // .collection('users')

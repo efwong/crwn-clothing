@@ -12,15 +12,6 @@ import Header from './components/header/header.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'; // get user state
 import { setCurrentUser } from './redux/user/user.actions';
 
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-
-const HatsPage = () => (
-  <div>
-    <h1> Hats </h1>
-  </div>
-);
-
 class App extends React.Component {
   unsubscribeFromAuth = null;
 

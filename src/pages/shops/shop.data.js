@@ -1,3 +1,4 @@
+// review shop data
 const SHOP_DATA = [
   {
     id: 1,

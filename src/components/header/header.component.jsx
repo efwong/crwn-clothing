@@ -1,11 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
 import { Link } from 'react-router-dom';
 import './header.styles.scss';
 import { auth } from '../../firebase/firebase.utils';
 import { ReactComponent as Logo } from '../../assets/crown.svg'; // special syntax to import svg
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropDown from '../cart-dropdown/cart-dropdown.component';
+import { selectCurrentUser } from './../../redux/user/user.selectors';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
 
 const Header = ({ currentUser, hidden }) => (
   <div className='header'>
@@ -37,8 +41,15 @@ const Header = ({ currentUser, hidden }) => (
 
 // currentUser selector
 // mapStateToProps acts like a selector, it gives it the context of currentUser in the component props
-const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
-  currentUser,
-  hidden
+// createStructuredSelector passes state to each subsequent selector
+/* same as
+(state) => ({
+  currentUser: selectCurrentUser(state),
+  ...
+})
+**/
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  hidden: selectCartHidden
 });
 export default connect(mapStateToProps)(Header);

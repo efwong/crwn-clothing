@@ -16,7 +16,6 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
-
   componentDidMount() {
     const { setCurrentUser } = this.props;
     // console.log('my props', this.props);
@@ -35,7 +34,6 @@ class App extends React.Component {
       // set currentUser to null
       setCurrentUser(userAuth);
     });
-    console.log('after onAuthStateChanged');
     // const firestore = firebase.firestore();
 
     // const test = firestore

@@ -22,5 +22,6 @@
         "typescriptreact"
     ],
     "prettier.singleQuote": true,
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "autoimport.filesToScan": "**/*.{js,ts,tsx}"
 }

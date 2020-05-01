@@ -1,0 +1,28 @@
+{
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 130,
+    "html.format.wrapAttributes": "force-aligned",
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.preferences.quoteStyle": "single",
+    "prettier.jsxBracketSameLine": true,
+    "prettier.jsxSingleQuote": true,
+    "workbench.colorTheme": "One Dark+ (Sublime)",
+    "window.zoomLevel": 0,
+    "files.associations": {
+        "*.js": "javascriptreact"
+    },
+    "auto-close-tag.activationOnLanguage": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "prettier.singleQuote": true,
+    "editor.tabSize": 2,
+    "autoimport.filesToScan": "**/*.{js,ts,tsx}",
+    "javascript.format.semicolons": "insert"
+}

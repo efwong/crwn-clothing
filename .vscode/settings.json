@@ -24,5 +24,6 @@
     "prettier.singleQuote": true,
     "editor.tabSize": 2,
     "autoimport.filesToScan": "**/*.{js,ts,tsx}",
-    "javascript.format.semicolons": "insert"
+    "javascript.format.semicolons": "insert",
+    "typescript.format.semicolons": "insert"
 }

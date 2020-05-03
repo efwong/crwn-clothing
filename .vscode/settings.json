@@ -1,32 +1,39 @@
 {
-    "editor.formatOnSave": true,
-    "editor.wordWrap": "on",
-    "editor.wordWrapColumn": 130,
-    "html.format.wrapAttributes": "force-aligned",
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "javascript.preferences.quoteStyle": "single",
-    "typescript.preferences.quoteStyle": "single",
-    "prettier.jsxBracketSameLine": true,
-    "prettier.jsxSingleQuote": true,
-    "workbench.colorTheme": "One Dark+ (Sublime)",
-    "window.zoomLevel": 0,
-    "files.associations": {
-        "*.js": "javascriptreact"
-    },
-    "auto-close-tag.activationOnLanguage": [
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact"
-    ],
-    "prettier.singleQuote": true,
-    "editor.tabSize": 2,
-    "autoimport.filesToScan": "**/*.{js,ts,tsx}",
-    "javascript.format.semicolons": "insert",
-    "typescript.format.semicolons": "insert",
-    "html.format.indentInnerHtml": true,
-    "html.format.indentHandlebars": true,
-    "html.format.maxPreserveNewLines": 130
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 130,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "html.format.wrapAttributes": "force-aligned",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode" //"vscode.typescript-language-features"
+  },
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "prettier.jsxSingleQuote": true,
+  "prettier.jsxBracketSameLine": false,
+  "workbench.colorTheme": "One Dark+ (Sublime)",
+  "window.zoomLevel": 0,
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
+  "auto-close-tag.activationOnLanguage": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "prettier.singleQuote": true,
+  "javascript.format.semicolons": "insert",
+  "typescript.format.semicolons": "insert",
+  "html.format.indentInnerHtml": true,
+  "html.format.indentHandlebars": true,
+  "html.format.maxPreserveNewLines": 130,
+  "autoimport.showNotifications": true
 }

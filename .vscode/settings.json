@@ -25,5 +25,8 @@
     "editor.tabSize": 2,
     "autoimport.filesToScan": "**/*.{js,ts,tsx}",
     "javascript.format.semicolons": "insert",
-    "typescript.format.semicolons": "insert"
+    "typescript.format.semicolons": "insert",
+    "html.format.indentInnerHtml": true,
+    "html.format.indentHandlebars": true,
+    "html.format.maxPreserveNewLines": 130
 }

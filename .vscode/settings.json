@@ -35,5 +35,6 @@
   "html.format.indentInnerHtml": true,
   "html.format.indentHandlebars": true,
   "html.format.maxPreserveNewLines": 130,
-  "autoimport.showNotifications": true
+  "autoimport.showNotifications": true,
+  "prettier.trailingComma": "none"
 }

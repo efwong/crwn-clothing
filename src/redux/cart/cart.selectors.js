@@ -7,10 +7,13 @@ export const selectCartItems = createSelector(
   (cart) => cart.cartItems
 );
 
+export const selectCartHidden = createSelector(
+  [selectCart],
+  (cart) => cart.hidden
+);
+
 // input selector takes state and returns a slice
 export const selectCartItemsCount = createSelector(
   [selectCartItems],
-  (cartItems) => {
-    cartItems.reduce((acc, cur) => acc + cur.quantity, 0);
-  }
+  (cartItems) => cartItems.reduce((acc, cur) => acc + cur.quantity, 0)
 );

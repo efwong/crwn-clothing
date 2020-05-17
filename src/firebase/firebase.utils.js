@@ -14,8 +14,6 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   // will always be true even if no data
   const snapShot = await userRef.get();
 
-  // console.log('snapshot', snapShot);
-  // console.log('userref', userRef);
   if (!snapShot.exists) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();

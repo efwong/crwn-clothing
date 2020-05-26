@@ -10,8 +10,8 @@
 
 # production
 /build
-**/firebase.config.js
-**/stripe.config.js
+# **/firebase.config.js
+# **/stripe.config.js
 
 # misc
 .DS_Store

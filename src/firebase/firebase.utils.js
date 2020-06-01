@@ -38,4 +38,44 @@ const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' }); // prompts user to select a user account
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
+export const convertCollectionsSnapshotToMap = (collections) => {
+  const transformedCollections = collections.docs.map((doc) => {
+    const { title, items } = doc.data();
+    return {
+      routeName: encodeURIComponent(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items
+    };
+  });
+
+  return transformedCollections.reduce((acc, collection) => {
+    acc[collection.title.toLowerCase()] = collection;
+    return acc;
+  }, {});
+};
+
 export default firebase;
+
+/**
+ * Code to upload shop data to firestore
+ */
+// addCollectionAndDocuments(
+//   'collections',
+//   collectionsArray.map(({ title, items }) => ({ title, items }))
+// ).then((result) => {
+//   console.log('result', result);
+// });
+// export const addCollectionAndDocuments = async (
+//   collectionKey,
+//   objectsToAdd
+// ) => {
+//   const collectionRef = firestore.collection(collectionKey);
+//   console.log('collectionref', collectionRef);
+//   const batch = firestore.batch();
+//   objectsToAdd.forEach((obj) => {
+//     const newDocRef = collectionRef.doc();
+//     batch.set(newDocRef, obj);
+//   });
+//   return await batch.commit();
+// };

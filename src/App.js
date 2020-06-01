@@ -29,6 +29,7 @@ class App extends React.Component {
         });
       }
       setCurrentUser(userAuth);
+
       // console.log('user', user);
 
       // createUserProfileDocument(user);

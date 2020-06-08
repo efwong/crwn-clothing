@@ -39,6 +39,7 @@ provider.setCustomParameters({ prompt: 'select_account' }); // prompts user to s
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export const convertCollectionsSnapshotToMap = (collections) => {
+  console.log('inside call to convertCollectionsSnapshotToMap');
   const transformedCollections = collections.docs.map((doc) => {
     const { title, items } = doc.data();
     return {

@@ -19,8 +19,10 @@ export const fetchCollectionsFailure = (error) => ({
 
 /**
  * Function to pass into component to begin fetching process
+ * Asynchronous action creator / thunk creator
  */
 export const fetchCollectionsStartAsync = () => {
+  // thunk: function returned from async action creator
   return (dispatch) => {
     const collectionRef = firestore.collection('collections');
     dispatch(fetchCollectionsStart());

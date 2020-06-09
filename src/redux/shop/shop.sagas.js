@@ -40,11 +40,11 @@ export function* fetchCollectionsAsync() {
     const snapshot = yield collectionRef.get();
     // can be called this way too: yield convertCollectionsSnapshotToMap(snapshot)
     console.log('begin call to convertCollectionsSnapshotToMap');
-    // const collectionsMap = yield call(
-    //   convertCollectionsSnapshotToMap,
-    //   snapshot
-    // );
-    const collectionsMap = yield convertCollectionsSnapshotToMap(snapshot);
+    const collectionsMap = yield call(
+      convertCollectionsSnapshotToMap,
+      snapshot
+    );
+    // const collectionsMap = yield convertCollectionsSnapshotToMap(snapshot);
     console.log('collectionsmap', collectionsMap);
 
     // put is like dispatch but needs to be yielded
@@ -62,7 +62,8 @@ export function* fetchCollectionsAsync() {
 }
 
 export function* fetchCollectionsStart() {
-  // TakeEvery:
+  console.log('SAGA: fetchCollectionsStart');
+  // TakeEvery: listens to action with FETCH_COLLECTIONS_START,then triggers fetchCollectionsAsync
   // @param1: action that triggers
   // @param2: fires when action is called
   yield takeEvery(

@@ -1,4 +1,4 @@
-import { takeLatest, take, takeEvery, delay, put } from 'redux-saga/effects';
+import { takeLatest, delay, put } from 'redux-saga/effects';
 import TestActionsTypes from './test.types';
 
 /**

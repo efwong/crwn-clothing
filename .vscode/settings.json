@@ -19,7 +19,7 @@
   "prettier.jsxSingleQuote": true,
   "prettier.jsxBracketSameLine": false,
   "workbench.colorTheme": "One Dark+ (Sublime)",
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 1,
   "files.associations": {
     "*.js": "javascriptreact"
   },

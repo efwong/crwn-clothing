@@ -4,7 +4,9 @@ import {
   signInSuccess,
   signInFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  signUpFailure,
+  emailSignInStart
 } from './user.actions';
 import {
   auth,
@@ -72,6 +74,9 @@ export function* onCheckUserSession() {
   yield takeLatest(UserActionTypes.CHECK_USER_SESSION, isUserAuthenticated);
 }
 
+/**
+ * SIGN OUT Events
+ */
 export function* signOut() {
   try {
     yield auth.signOut();
@@ -85,11 +90,54 @@ export function* onSignOutStart() {
   yield takeLatest(UserActionTypes.SIGN_OUT_START, signOut);
 }
 
+/**
+ * SIGN UP Events
+ */
+
+export function* signUp({ payload: { displayName, email, password } }) {
+  try {
+    console.log('test', displayName, email, password);
+    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+    const userProfile = yield createUserProfileDocument(user, { displayName });
+
+    if (userProfile) {
+      yield put(emailSignInStart({ email, password }));
+    } else {
+      yield put(signUpFailure('sign up error'));
+    }
+
+    // try {
+    //   const { user } = await auth.createUserWithEmailAndPassword(
+    //     email,
+    //     password
+    //   );
+
+    //   await createUserProfileDocument(user, { displayName });
+
+    //   this.state = {
+    //     displayName: '',
+    //     email: '',
+    //     password: '',
+    //     confirmPassword: ''
+    //   };
+    // } catch (error) {
+    //   console.error(error);
+    // }
+  } catch (error) {
+    yield put(signUpFailure(error));
+  }
+}
+
+export function* onSignUpStart() {
+  yield takeLatest(UserActionTypes.SIGN_UP_START, signUp);
+}
+
 export function* userSagas() {
   yield all([
     call(onGoogleSignInStart),
     call(onEmailSignInStart),
     call(onCheckUserSession),
-    call(onSignOutStart)
+    call(onSignOutStart),
+    call(onSignUpStart)
   ]);
 }

@@ -19,7 +19,7 @@ class SignIn extends React.Component {
     event.preventDefault();
     const { emailSignInStart } = this.props;
     const { email, password } = this.state;
-    emailSignInStart(email, password);
+    emailSignInStart({ email, password });
   };
 
   handleChange = (event) => {
@@ -73,8 +73,7 @@ class SignIn extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
   googleSignInStart: () => dispatch(googleSignInStart()),
-  emailSignInStart: (email, password) =>
-    dispatch(emailSignInStart({ email, password }))
+  emailSignInStart: (user) => dispatch(emailSignInStart(user))
 });
 
 export default connect(null, mapDispatchToProps)(SignIn);

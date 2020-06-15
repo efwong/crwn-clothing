@@ -30,23 +30,6 @@ class SignUp extends React.Component {
     }
 
     signUpStart({ displayName, email, password });
-    // try {
-    //   const { user } = await auth.createUserWithEmailAndPassword(
-    //     email,
-    //     password
-    //   );
-
-    //   await createUserProfileDocument(user, { displayName });
-
-    //   this.state = {
-    //     displayName: '',
-    //     email: '',
-    //     password: '',
-    //     confirmPassword: ''
-    //   };
-    // } catch (error) {
-    //   console.error(error);
-    // }
   };
 
   handleChange = (event) => {
@@ -101,7 +84,7 @@ class SignUp extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  signUpStart: (user) => dispatch(signUpStart(user))
+  signUpStart: (userCredentials) => dispatch(signUpStart(userCredentials))
 });
 
 export default connect(null, mapDispatchToProps)(SignUp);

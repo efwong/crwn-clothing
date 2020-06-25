@@ -3,6 +3,7 @@ import { TestIncrement, TestDecrement } from './redux/test.actions';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectTestValue } from './redux/test.selectors';
+import UseReducerExample from './use-reducer-example.component';
 
 const TestPage = (props) => {
   const { increment, decrement, value } = props;
@@ -14,6 +15,7 @@ const TestPage = (props) => {
         <button onClick={increment}>Add 1</button>
         <button onClick={decrement}>Minus 1</button>
       </div>
+      <UseReducerExample />
     </div>
   );
 };

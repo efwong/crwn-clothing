@@ -6,12 +6,15 @@
 /.pnp
 .env
 .pnp.js
+client/build/**/*
+package.json
 
 # testing
 /coverage
 
 # production
 /build
+
 # **/firebase.config.js
 # **/stripe.config.js
 

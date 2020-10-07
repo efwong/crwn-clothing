@@ -6,7 +6,6 @@
 /.pnp
 .env
 .pnp.js
-client/build/**/*
 package.json
 
 # testing

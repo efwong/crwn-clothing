@@ -15,7 +15,7 @@ const TestPage = lazy(() => import('./pages/test/test-page.component'));
 const SignInandSignUpPage = lazy(() =>
   import('./pages/sign-in-and-sign-up/sign-in-and-sign-up.component')
 );
-
+// main app
 const App = ({ checkUserSession, currentUser }) => {
   useEffect(() => {
     checkUserSession();
